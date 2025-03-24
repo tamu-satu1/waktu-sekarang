@@ -1,53 +1,55 @@
 const Waktu = {
-    waktu: () => { return new Date() },
-    tahun: () => { return new Date().getFullYear() },
-    tanggal: () => { return new Date().getDate() },
-    bulan: () => { return (new Date().getMonth()) },
-    hari: () => { return new Date().getDay() },
-    jam: () => { return new Date().getHours() },
-    menit: () => { return new Date().getMinutes() },
-    detik: () => { return new Date().getSeconds() },
+    duaDigit: (angka) => { if (angka.length < 2) { return '0'.concat(angka) } else { return angka } },
+    waktu: () => { return String(new Date()) },
+    tahun: () => { return String(new Date().getFullYear()) },
+    tanggal: () => { return String(new Date().getDate()) },
+    bulan: () => { return Waktu.duaDigit(String(new Date().getMonth())) },
+    hari: () => { return Waktu.duaDigit(String(new Date().getDay())) },
+    jam: () => { return Waktu.duaDigit(String(new Date().getHours())) },
+    menit: () => { return Waktu.duaDigit(String(new Date().getMinutes())) },
+    detik: () => { return Waktu.duaDigit(detik = String(new Date().getSeconds())) },
     namaHari: () => {
-        switch (Waktu.hari()) {
-            case 1: return 'senin'
-            case 2: return 'selasa'
-            case 3: return 'rabu'
-            case 4: return 'kamis'
-            case 5: return 'jumat'
-            case 6: return 'sabtu'
-            case 7: return 'minggu'
+        switch (Number(Waktu.hari())) {
+            case 0: return 'Minggu'
+            case 1: return 'Senin'
+            case 2: return 'Selasa'
+            case 3: return 'Rabu'
+            case 4: return 'Kamis'
+            case 5: return 'Jumat'
+            case 6: return 'Sabtu'
             default: return undefined
         }
     },
     namaBulan: () => {
-        switch (Waktu.bulan()) {
+        switch (Number(Waktu.bulan())) {
             case 0:
-                return 'januari'
+                return 'Januari'
             case 1:
-                return 'februari'
+                return 'Februari'
             case 2:
-                return 'maret'
+                return 'Maret'
             case 3:
-                return 'april'
+                return 'April'
             case 4:
-                return 'mei'
+                return 'Mei'
             case 5:
-                return 'juni'
+                return 'Juni'
             case 6:
-                return 'juli'
+                return 'Juli'
             case 7:
-                return 'agustus'
+                return 'Agustus'
             case 8:
-                return 'september'
+                return 'September'
             case 9:
-                return 'oktober'
+                return 'Oktober'
             case 10:
-                return 'november'
+                return 'November'
             case 11:
-                return 'desember'
+                return 'Desember'
             default:
                 return undefined
         }
     },
     sekarang: () => { return `${Waktu.namaHari()} ${Waktu.tanggal()} ${Waktu.namaBulan()} ${Waktu.tahun()} ${Waktu.jam()}:${Waktu.menit()}:${Waktu.detik()}` }
 }
+
